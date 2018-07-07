@@ -7,16 +7,53 @@ const app = (module.exports = loopback());
 
 const path = require('path');
 
+const http = require('http');
+const https = require('spdy');
+const sslConfig = require('./ssl-config');
+
+app.close = function() {
+  app.emit('close');
+};
+
 app.start = function() {
-  return app.listen(function() {
-    app.emit('started');
-    var baseUrl = app.get('url').replace(/\/$/, '');
-    console.log('Web server listening at: %s', baseUrl);
-    if (app.get('loopback-component-explorer')) {
-      var explorerPath = app.get('loopback-component-explorer').mountPath;
-      console.log('Browse your REST API at %s%s', baseUrl, explorerPath);
-    }
+  const httpsOptions = {
+    key: sslConfig.privateKey,
+    cert: sslConfig.certificate,
+  };
+
+  let httpServer, httpsServer;
+
+  if (app.get('https')) {
+    httpsServer = https
+      .createServer(httpsOptions, app)
+      .listen(app.get('port'), () => {
+        const baseUrl = `https://${app.get('host')}:${app.get('port')}`;
+        app.emit('https-start', baseUrl);
+      });
+  }
+
+  httpServer = http.createServer(app).listen(app.get('httpPort'), () => {
+    const baseUrl = 'http://' + app.get('host') + ':' + app.get('httpPort');
+    app.emit('http-start', baseUrl);
   });
+
+  app.on('close', () => {
+    if (httpServer) httpServer.close();
+    if (httpsServer) httpsServer.close();
+  });
+
+  app.on('http-close', () => {
+    if (httpServer) httpServer.close();
+  });
+
+  app.on('https-close', () => {
+    if (httpsServer) httpServer.close();
+  });
+
+  return {
+    http: httpServer,
+    https: httpsServer,
+  };
 };
 
 // Bootstrap the application, configure models, datasources and middleware.

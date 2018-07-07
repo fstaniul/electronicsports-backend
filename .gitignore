@@ -20,3 +20,7 @@ npm-debug.log
 
 # Ignore client files, as they are in another repo
 client/
+
+# Ignore certificates
+server/private/*
+!server/private/ssl-certificates.conf
