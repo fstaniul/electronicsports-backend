@@ -1,12 +1,13 @@
 'use strict';
 
-var loopback = require('loopback');
-var boot = require('loopback-boot');
+const loopback = require('loopback');
+const boot = require('loopback-boot');
 
-var app = module.exports = loopback();
+const app = (module.exports = loopback());
+
+const path = require('path');
 
 app.start = function() {
-  // start the web server
   return app.listen(function() {
     app.emit('started');
     var baseUrl = app.get('url').replace(/\/$/, '');
@@ -23,7 +24,13 @@ app.start = function() {
 boot(app, __dirname, function(err) {
   if (err) throw err;
 
+  // setup that any unmatched route is being redirected to index.html of client
+  const router = app.loopback.Router();
+  router.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'client', 'index.html'));
+  });
+  app.use(router);
+
   // start the server if `$ node server.js`
-  if (require.main === module)
-    app.start();
+  if (require.main === module) app.start();
 });
