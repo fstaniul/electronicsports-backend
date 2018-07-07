@@ -3,6 +3,10 @@
     "loopback#favicon": {}
   },
   "initial": {
+    "./middleware/https-redirect": {
+      "name": "https-redirect",
+      "enabled": true
+    },
     "compression": {},
     "cors": {
       "params": {

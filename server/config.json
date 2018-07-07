@@ -2,8 +2,8 @@
   "restApiRoot": "/api",
   "host": "electronicsports.pl",
   "port": 443,
-  "httpPort": 80,
   "https": true,
+  "httpPort": 80,
   "remoting": {
     "context": false,
     "rest": {

@@ -8,7 +8,7 @@
 module.exports = function(options) {
   return function httpsRedirect(req, res, next) {
     var app = req.app;
-    if (!req.secure) {
+    if (!req.secure && app.get('https')) {
       return res.redirect(
         'https://' + app.get('host') + ':' + app.get('port') + req.url
       );

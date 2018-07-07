@@ -1,4 +1,11 @@
 {
+  "initial": {
+    "./middleware/https-redirect": {
+      "name": "https-redirect",
+      "enable": false,
+      "optional": true
+    }
+  },
   "final:after": {
     "strong-error-handler": {
       "params": {
