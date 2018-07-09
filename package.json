@@ -7,8 +7,10 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "start": "NOVE_ENV=production node .",
-    "testrun": "NODE_ENV=development node .",
+    "start-unix": "NOVE_ENV=production node .",
+    "start-win": "NOVE_ENV=production node .",
+    "devstart-win": "set NODE_ENV=development && node .",
+    "devstart-unix": "NODE_ENV=development node .",
     "posttest": "npm run lint && nsp check",
     "generate-key": "openssl genrsa -out server/private/electronicsports.key.pem 2048",
     "generate-cert": "openssl req -config server/private/ssl-certificates.conf -new -x509 -sha256 -nodes -key server/private/electronicsports.key.pem -days 365 -out server/private/electronicsports.cert.pem",
@@ -32,9 +34,9 @@
     "nsp": "^2.1.0"
   },
   "repository": {
-    "type": "",
-    "url": ""
+    "type": "GIT",
+    "url": "https://github.com/vip1all/electronicsports-backend"
   },
-  "license": "UNLICENSED",
-  "description": "electronicsports-backend"
+  "license": "MIT",
+  "description": "Backend API for electronicsports.pl"
 }

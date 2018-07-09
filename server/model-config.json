@@ -14,7 +14,8 @@
     ]
   },
   "User": {
-    "dataSource": "db"
+    "dataSource": "db",
+    "public": false
   },
   "AccessToken": {
     "dataSource": "db",
@@ -33,6 +34,30 @@
   },
   "Role": {
     "dataSource": "db",
+    "public": false
+  },
+  "Member": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Profile": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Picture": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Post": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Comment": {
+    "dataSource": null,
+    "public": false
+  },
+  "PostComments": {
+    "dataSource": null,
     "public": false
   }
 }

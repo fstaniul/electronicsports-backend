@@ -1,0 +1,45 @@
+{
+  "name": "Profile",
+  "plural": "profiles",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
+    "description": {
+      "type": "string",
+      "default": ""
+    },
+    "social": {
+      "type": "object",
+      "default": {}
+    }
+  },
+  "validations": [],
+  "relations": {
+    "member": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "member",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "picture": {
+      "type": "hasOne",
+      "model": "Picture",
+      "foreignKey": "picture",
+      "options": {
+        "nestRemoting": true
+      }
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

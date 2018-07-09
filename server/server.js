@@ -29,12 +29,14 @@ app.start = function() {
       .listen(app.get('port'), () => {
         const baseUrl = `https://${app.get('host')}:${app.get('port')}`;
         app.emit('https-start', baseUrl);
+        console.log(`Server listening at ${baseUrl}`);
       });
   }
 
   httpServer = http.createServer(app).listen(app.get('httpPort'), () => {
     const baseUrl = 'http://' + app.get('host') + ':' + app.get('httpPort');
     app.emit('http-start', baseUrl);
+    console.log(`Server listening at ${baseUrl}`);
   });
 
   app.on('close', () => {

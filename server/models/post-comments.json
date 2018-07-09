@@ -1,0 +1,29 @@
+{
+  "name": "PostComments",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "validations": [],
+  "relations": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
+    "post": {
+      "type": "belongsTo",
+      "model": "Post",
+      "foreignKey": "post"
+    },
+    "comment": {
+      "type": "belongsTo",
+      "model": "Comment",
+      "foreignKey": "comment"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

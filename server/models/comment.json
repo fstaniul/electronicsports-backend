@@ -1,0 +1,27 @@
+{
+  "name": "Comment",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "By": true,
+    "TimeStamp": true,
+    "RenderedText": {
+      "raw": "rawText",
+      "rendered": "renderedText"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

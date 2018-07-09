@@ -1,0 +1,51 @@
+{
+  "name": "Post",
+  "plural": "posts",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Timestamp": true,
+    "By": true,
+    "RenderedText": {
+      "raw": "rawText",
+      "rendered": "renderedText"
+    }
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "defaultFn": "uuidv4"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "picture": {
+      "type": "hasOne",
+      "model": "Picture",
+      "foreignKey": "picture",
+      "options": {
+        "nestRemoting": true
+      }
+    },
+    "comments": {
+      "type": "hasMany",
+      "model": "Comment",
+      "foreignKey": "comment",
+      "options": {
+        "nestRemoting": true,
+        "disableInclude": true
+      },
+      "through": "PostComments"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
