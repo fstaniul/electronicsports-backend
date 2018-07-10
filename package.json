@@ -14,7 +14,8 @@
     "posttest": "npm run lint && nsp check",
     "generate-key": "openssl genrsa -out server/private/electronicsports.key.pem 2048",
     "generate-cert": "openssl req -config server/private/ssl-certificates.conf -new -x509 -sha256 -nodes -key server/private/electronicsports.key.pem -days 365 -out server/private/electronicsports.cert.pem",
-    "generate-csr": "openssl req -config server/private/ssl-certificates.conf -new -sha256 -nodes -key server/private/electronicsports.key.pem -days 365 -out server/private/electronicsports.req.pem"
+    "generate-csr": "openssl req -config server/private/ssl-certificates.conf -new -sha256 -nodes -key server/private/electronicsports.key.pem -days 365 -out server/private/electronicsports.req.pem",
+    "test-win": "mocha \".\\server\\**\\*.spec.js\" \".\\server\\**\\*.test.js\""
   },
   "dependencies": {
     "compression": "^1.0.3",
@@ -29,8 +30,10 @@
     "strong-error-handler": "^3.0.0"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
     "eslint": "^3.17.1",
     "eslint-config-loopback": "^8.0.0",
+    "mocha": "^5.2.0",
     "nsp": "^2.1.0"
   },
   "repository": {
