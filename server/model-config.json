@@ -53,11 +53,15 @@
     "public": true
   },
   "Comment": {
-    "dataSource": null,
+    "dataSource": "db",
     "public": false
   },
   "PostComments": {
-    "dataSource": null,
+    "dataSource": "db",
     "public": false
+  },
+  "Event": {
+    "dataSource": null,
+    "public": true
   }
 }

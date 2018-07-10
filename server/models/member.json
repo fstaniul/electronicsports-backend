@@ -16,9 +16,9 @@
   "validations": [],
   "relations": {
     "profile": {
-      "type": "belongsTo",
+      "type": "hasOne",
       "model": "Profile",
-      "foreignKey": "profile",
+      "foreignKey": "member",
       "options": {
         "nestRemoting": true
       }

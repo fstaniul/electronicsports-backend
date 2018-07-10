@@ -1,6 +1,6 @@
 {
-  "name": "Profile",
-  "plural": "profiles",
+  "name": "Event",
+  "plural": "events",
   "base": "PersistedModel",
   "idInjection": false,
   "options": {
@@ -12,29 +12,39 @@
       "id": true,
       "defaultFn": "uuidv4"
     },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "date": {
+      "type": "date"
+    },
     "description": {
       "type": "string",
-      "default": ""
+      "required": true
     },
-    "social": {
-      "type": "object",
-      "default": {}
+    "location": {
+      "type": "string"
+    },
+    "online": {
+      "type": "boolean",
+      "required": true
     }
   },
   "validations": [],
   "relations": {
-    "member": {
+    "thumbnail": {
       "type": "belongsTo",
-      "model": "Member",
-      "foreignKey": "member",
+      "model": "Picture",
+      "foreignKey": "thumbnail",
       "options": {
         "nestRemoting": true
       }
     },
-    "picture": {
+    "image": {
       "type": "belongsTo",
       "model": "Picture",
-      "foreignKey": "picture",
+      "foreignKey": "image",
       "options": {
         "nestRemoting": true
       }

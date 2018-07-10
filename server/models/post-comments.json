@@ -10,7 +10,6 @@
   "relations": {
     "id": {
       "type": "string",
-      "id": true,
       "defaultFn": "uuidv4"
     },
     "post": {

@@ -23,12 +23,17 @@
     "title": {
       "type": "string",
       "required": true
+    },
+    "published": {
+      "type": "boolean",
+      "required": true,
+      "default": false
     }
   },
   "validations": [],
   "relations": {
     "picture": {
-      "type": "hasOne",
+      "type": "belongsTo",
       "model": "Picture",
       "foreignKey": "picture",
       "options": {
